@@ -1,15 +1,14 @@
-const catchAPIurl = "http://localhost:5678/api/";
+const catchAPIurl = "http://localhost:5678/api";
 
 // Appel de l'API avec fetch
 window.onload = () => {
-    fetch(`${catchAPIurl}works`)
+    fetch(`${catchAPIurl}/works`)
       .then((response) => response.json())
       .then((data) => {
-        worksData = data;
         //get list of categories
-        listOfUniqueCategories();
+        const categories = getCategories(data);
         //affiche tous les travaux
-        displayGallery(worksData);
+        displayGallery(data);
         //Filter functionnality
         filter = document.querySelector(".filter");
         categoryFilter(categories, filter);
@@ -44,8 +43,8 @@ function displayGallery(data) {
 // ********** FILTER ***********//
 
 //get list of categories in array as unique objects
-function listOfUniqueCategories() {
-    let listOfCategories = new Set();
+function getCategories(worksData) {
+    const listOfCategories = new Set();
     //get set of string categories
     worksData.forEach((work) => {
       listOfCategories.add(JSON.stringify(work.category));
@@ -53,7 +52,9 @@ function listOfUniqueCategories() {
     //push stringified categories in array
     const arrayOfStrings = [...listOfCategories];
     //parse array to get objects back
-    categories = arrayOfStrings.map((s) => JSON.parse(s));
+    const categories = arrayOfStrings.map((s) => JSON.parse(s));
+    
+    return categories;
   }
   
   

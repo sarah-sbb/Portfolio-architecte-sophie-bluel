@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.querySelector('form');
-    const loginBtn = document.getElementById('loginBtn');
-    const catchAPIurl = "http://localhost:5678/api";
-
-    loginForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
+    
+    loginForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
 
         const email = document.getElementById('email').value;
         const password = document.getElementById('password').value;
 
         try {
-            const response = await fetch(`${catchAPIurl}/login`, {
+            const response = await fetch('http://localhost:5678/api/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -20,14 +18,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (response.ok) {
                 const data = await response.json();
+                
                 localStorage.setItem('authToken', data.token);
                 window.location.href = 'index.html';
             } else {
-                alert('Email ou mot de passe incorrect');
+                const errorData = await response.json();
+                alert(`Erreur : ${errorData.message}`);
             }
         } catch (error) {
-            console.error('Erreur:', error);
-            alert('Une erreur est survenue. Veuillez réessayer.');
+            console.error('Erreur de connexion:', error);
+            alert('Erreur de connexion. Veuillez réessayer.');
         }
     });
 });

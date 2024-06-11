@@ -13,7 +13,7 @@ window.onload = () => {
         filter = document.querySelector(".filter");
         categoryFilter(categories, filter);
         //administrator mode
-        adminUserMode(filter);
+        // adminUserMode(filter);
       });
   };
   

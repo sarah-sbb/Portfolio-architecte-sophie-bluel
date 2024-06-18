@@ -207,7 +207,7 @@ function deleteProject(workId, workGalleryCard) {
           workGalleryCard.remove(); 
           console.log(`Votre projet ${workId} a été supprimé avec succès`);
         } else {
-          console.error(`Erreur lors de la suppression ${response.status} ${response.statusText}`); 
+          console.error(`Erreur lors de la suppression`); 
         }
       })
       .catch(error => console.error('Error:', error));

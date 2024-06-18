@@ -14,10 +14,11 @@ window.onload = () => {
         categoryFilter(categories, filter);
         //administrator mode
         // adminUserMode(filter);
+        displayModalGallery(data);
       });
   };
   
-//*******GALLERY*******
+//*******GALLERY*******//
 
 function displayGallery(data) {
     gallery = document.querySelector(".gallery");
@@ -38,7 +39,6 @@ function displayGallery(data) {
       workCard.append(workImage, workTitle);
     });
   }
-
   
 // ********** FILTER ***********//
 
@@ -55,8 +55,7 @@ function getCategories(worksData) {
     const categories = arrayOfStrings.map((s) => JSON.parse(s));
     
     return categories;
-  }
-  
+  }  
   
   //init filter buttons
   function categoryFilter(categories, filter) {
@@ -110,3 +109,119 @@ function getCategories(worksData) {
       });
     }
   }
+
+//*******MODAL*******//
+
+let modal = null; 
+
+// Ouvre la modale
+const openModal = function (e) {
+    e.preventDefault();
+    const target = document.getElementById('modal1');
+    target.style.display = null;
+    target.removeAttribute('aria-hidden');
+    target.setAttribute('aria-modal', 'true');
+    modal = target;
+    modal.addEventListener('click', closeModal);
+    modal.querySelector('.js-modal-close').addEventListener('click', closeModal);
+    modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
+}
+
+// Permet de fermer la modal
+const closeModal = function (e) {
+    if (modal === null) return;
+    e.preventDefault();
+    modal.style.display = "none";
+    modal.setAttribute('aria-hidden', 'true');
+    modal.removeAttribute('aria-modal');
+    modal.removeEventListener('click', closeModal);
+    modal.querySelector('js-modal-close').removeEventListener('click', closeModal);
+    modal.querySelector('js-modal-stop').removeEventListener('click', stopPropagation);
+    modal = null;
+}
+
+const stopPropagation = function (e) {
+    e.stopPropagation();
+}
+
+document.querySelectorAll('.js-modal').forEach(a => {
+    a.addEventListener('click', openModal);
+})
+
+// Ferme la modal avec la touche echap
+window.addEventListener('keydown', function (e) {
+    if (e.key === "Escape" || e.key === "Esc") {
+        closeModal(e);
+    }
+})
+
+// Affiche la galerie de la modal
+function displayModalGallery(data) {
+  titleModal = document.getElementById("titlemodal");
+  modalGallery = document.querySelector(".modalGallery");
+  modalGallery.innerHTML = "";
+  titleModal.innerHTML = "Galerie photos";
+  //intégre tous les travaux dans un tableau
+  data.forEach((i) => {
+    //crée les tags
+    const workGalleryCard = document.createElement("figure");
+    const workImage = document.createElement("img");
+    const trashCan = document.createElement("i");
+    trashCan.classList.add("fa-solid", "fa-trash-can");
+
+    workImage.src = i.imageUrl;
+    workImage.alt = i.title;
+    workGalleryCard.dataset.category = i.category.name;
+    workGalleryCard.className = "workGalleryCard";
+    //references to DOM
+    workGalleryCard.append(workImage, trashCan);
+    modalGallery.appendChild(workGalleryCard);
+  });
+}
+
+function displayModalGallery(data) {
+  titleModal = document.getElementById("titlemodal");
+  modalGallery = document.querySelector(".modalGallery");
+  modalGallery.innerHTML = "";
+  titleModal.innerHTML = "Galerie photos";
+  //intégre tous les travaux dans un tableau
+  data.forEach((i) => {
+    //crée les tags
+    const workGalleryCard = document.createElement("figure");
+    const workImage = document.createElement("img");
+    const trashCan = document.createElement("i");
+    trashCan.classList.add("fa-solid", "fa-trash-can");
+
+    workImage.src = i.imageUrl;
+    workImage.alt = i.title;
+    workGalleryCard.dataset.category = i.category.name;
+    workGalleryCard.className = "workGalleryCard";
+    //references to DOM
+    workGalleryCard.append(workImage, trashCan);
+    modalGallery.appendChild(workGalleryCard);
+
+    // Add event listener to the trash can icon
+    trashCan.addEventListener("click", () => {
+      // Send DELETE request to the API
+      fetch(`${catchAPIurl}/works/${i.id}`, {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`, // Include the authentication token in the headers
+        },
+      })
+        .then((response) => {
+          if (response.ok) {
+            // Remove the deleted work from the modal gallery
+            modalGallery.removeChild(workGalleryCard);
+          } else {
+            // Handle error
+            console.error("Failed to delete work");
+          }
+        })
+        .catch((error) => {
+          // Handle error
+          console.error("Error deleting work:", error);
+        });
+    });
+  });
+}

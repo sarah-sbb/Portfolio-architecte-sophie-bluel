@@ -25,11 +25,30 @@
 		<div class="modal-wrapper js-modal-stop">
 			<i class="fa-solid fa-xmark js-modal-close"></i>
 			<h3 id="titlemodal"></h3>
-			<div class="modalGallery"></div>
-			<button class="btn-modal">Ajouter une photo</button>
+			<div class="modalGallery"></div>			
+			<button id="addPhoto" class="btn-modal js-btn-addImg">
+				Ajouter une photo
+			</button>
+			<div id="modalForm" class="modal-form" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
+				<form action="post">
+					<label for="file">Ajouter une photo</label>
+					<input type="file" name="file" id="file">
+					<label for="title">Titre</label>
+					<input type="text">
+					<label for="categorie">Catégorie</label>
+					<select name="categories" id="select-categories">
+						<option value="">Choisir votre catégorie</option>
+						<option value="dog">Objets</option>
+						<option value="cat">Maisons & appartements</option>
+						<option value="hamster">Hôtels & restaurants</option>
+					</select>				  
+					<input type="submit" value="Valider">
+				</form>
+			</div>	
 		</div>
 	</aside>
-<header>
+
+<header>	
 	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
 	<nav>
 		<ul>

@@ -382,3 +382,57 @@ footer nav ul {
 	border-radius: 3px;
 	z-index: 100;
 }
+
+.modal-form {
+	display: flex !important;
+	justify-content: center;
+	align-items: center;
+	max-width: 100%;
+}
+
+.modal-form form {
+	margin-top: 50px;
+}
+
+select {
+	background: #fff;
+	width: 380px;
+	height: 50px;
+	border: 1px solid rgb(255, 241, 219);
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	margin-bottom: 20px;
+}
+
+.label-photo {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	padding: 30px;
+	background-color: #E8F1F6 ;
+}
+
+.label-photo input[type=file] {
+	display: none;
+  }
+  
+  /* On créé un bouton en ciblant un élément dans la balise label */
+  .label-photo{
+	display: flex;
+	justify-content: center;
+	padding: 8px 12px;
+	background: #E8F1F6;
+	color: #000;
+	cursor: pointer;
+	height: 170px;
+	margin-bottom: 20px;
+  }
+
+  .addImg {
+	color: #306685;
+	font-weight: bold;
+	background: #CBD6DC;
+	border-radius: 50px;
+	padding: 10px;
+	margin: 10px 0;
+  }
+  

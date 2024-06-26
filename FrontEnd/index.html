@@ -31,8 +31,14 @@
 			</button>
 			<div id="modalForm" class="modal-form" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
 				<form action="post">
-					<label for="file">Ajouter une photo</label>
-					<input type="file" name="file" id="file">
+					<div class="label-photo">
+						<img src="assets/icons/picture.png" alt="">				
+						<label for="images" class="addImg">
+							<span>+ Ajouter une photo</span>
+							<input type="file" id="images" />
+						</label>						  
+						<p>jpg, png : 4mo max</p>
+					</div>
 					<label for="title">Titre</label>
 					<input type="text">
 					<label for="categorie">Catégorie</label>

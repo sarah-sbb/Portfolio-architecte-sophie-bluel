@@ -12,7 +12,7 @@ const openModal = (e) => {
     modal.addEventListener('click', closeModal);
     modal.querySelector('.js-modal-close').addEventListener('click', closeModal);
     modal.querySelector('.js-modal-stop').addEventListener('click', stopPropagation);
-    setTitle('Galerie photo');
+    setTitle('Galerie photo'); // Définit le titre par défaut lors de l'ouverture de la modal
 }
 
 document.querySelectorAll('.js-modal').forEach(a => {
@@ -111,19 +111,19 @@ const addPhotoButton = document.getElementById('addPhoto');
 addPhotoButton.addEventListener('click', function(event) {
     event.preventDefault();
     
-    const modalGallery = document.querySelector('.modalGallery');
+    const modalWrapper = document.querySelector('.modalGallery');
     const modalForm = document.getElementById('modalForm');
     
-    // Masquer le modalWrapper et afficher le modalForm
-    modalGallery.style.display = 'none';
+    // Masquer le modalGallery et afficher le modalForm
+    modalWrapper.style.display = 'none';
     modalForm.style.display = 'block';
     
     modalForm.removeAttribute('aria-hidden');
     modalForm.setAttribute('aria-modal', 'true');
-
+    
     // Masquer le bouton "Ajouter une photo"
     addPhotoButton.style.display = 'none';
-
+    
     // Changer le titre de la modal
     setTitle('Ajout photo');
 });

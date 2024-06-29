@@ -15,101 +15,87 @@
 </head>
 <body>
 	<div class="modal-btn modal-btn-primary">
-		<a href="modal1" class="js-modal"> 
+		<a href="#modal1" class="js-modal"> 
 			<i class="fa-regular fa-pen-to-square"></i> 
 			Mode édition
 		</a>
 	</div>
-
+	
 	<aside id="modal1" class="main-modal" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
 		<div class="modal-wrapper js-modal-stop">
-			<i class="fa-solid fa-xmark js-modal-close"></i>
+			<ul class="modal-nav_icon">
+				<li id="arrowPrevious" class="icon-item form-view-only">
+					<i class="fa-solid fa-arrow-left"></i>
+				</li>
+				<li class="icon-item">
+					<i class="fa-solid fa-xmark js-modal-close"></i>
+				</li>
+			</ul>
 			<h3 id="titlemodal"></h3>
-			<div class="modalGallery"></div>			
+			<div class="modalGallery"></div>            
 			<button id="addPhoto" class="btn-modal js-btn-addImg">
 				Ajouter une photo
 			</button>
-			<div id="modalForm" class="modal-form" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;">
-				<form action="post">
-					<div class="label-photo">
-						<img src="assets/icons/picture.png" alt="">				
-						<label for="images" class="addImg">
-							<span>+ Ajouter une photo</span>
-							<input type="file" id="images" />
-						</label>						  
-						<p>jpg, png : 4mo max</p>
-					</div>
-					<label for="title">Titre</label>
-					<input type="text">
-					<label for="categorie">Catégorie</label>
-					<select name="categories" id="select-categories">
-						<option value="">Choisir votre catégorie</option>
-						<option value="dog">Objets</option>
-						<option value="cat">Maisons & appartements</option>
-						<option value="hamster">Hôtels & restaurants</option>
-					</select>				  
-					<input type="submit" value="Valider">
-				</form>
-			</div>	
+			<div id="modalForm" class="modal-form" aria-hidden="true" role="dialog" aria-labelledby="titlemodal" style="display: none;"></div>    
 		</div>
 	</aside>
 
-<header>	
-	<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-	<nav>
-		<ul>
-			<li><a href="index.html">Projets</a></li>
-			<li><a href="#contact">Contact</a></li>
-			<li><a href="login.html" id="logBtn">Login</a></li>
-			<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-		</ul>
-	</nav>
-</header>
-<main id="main-color">
-	<section id="introduction">
-		<figure>
-			<img src="./assets/images/sophie-bluel.png" alt="">
-		</figure>
-		<article>
-			<h2>Designer d'espace</h2>
-			<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
-			<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
-			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
-		</article>
-	</section>
-	<section id="portfolio">
-		<h2>Mes Projets</h2> 
-		<div id="modal" class="modal-btn">
-			<a href="#" class="js-modal">
-				<i class="fa-regular fa-pen-to-square"></i> 
-				Modifier
-			</a>
-		</div>
-		<div class="filter"></div>
-		<div class="gallery"></div>
-	</section>
-	<section id="contact">
-		<h2>Contact</h2> 		
-		<p>Vous avez un projet ? Discutons-en !</p>
-		<form action="#" method="post">
-			<label for="name">Nom</label>
-			<input type="text" name="name" id="name">
-			<label for="email">Email</label>
-			<input type="email" name="email" id="email">
-			<label for="message">Message</label>
-			<textarea name="message" id="message" cols="30" rows="10"></textarea>
-			<input type="submit" value="Envoyer">
-		</form>
-	</section>
-</main>
+	<header>	
+		<h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
+		<nav>
+			<ul>
+				<li><a href="index.html">Projets</a></li>
+				<li><a href="#contact">Contact</a></li>
+				<li><a href="login.html" id="logBtn">Login</a></li>
+				<li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+			</ul>
+		</nav>
+	</header>
+	<main id="main-color">
+		<section id="introduction">
+			<figure>
+				<img src="./assets/images/sophie-bluel.png" alt="">
+			</figure>
+			<article>
+				<h2>Designer d'espace</h2>
+				<p>Je raconte votre histoire, je valorise vos idées. Je vous accompagne de la conception à la livraison finale du chantier.</p>
+				<p>Chaque projet sera étudié en commun, de façon à mettre en valeur les volumes, les matières et les couleurs dans le respect de l’esprit des lieux et le choix adapté des matériaux. Le suivi du chantier sera assuré dans le souci du détail, le respect du planning et du budget.</p>
+				<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
+			</article>
+		</section>
+		<section id="portfolio">
+			<h2>Mes Projets</h2> 
+			<div id="modal" class="modal-btn">
+				<a href="#" class="js-modal">
+					<i class="fa-regular fa-pen-to-square"></i> 
+					Modifier
+				</a>
+			</div>
+			<div class="filter"></div>
+			<div class="gallery"></div>
+		</section>
+		<section id="contact">
+			<h2>Contact</h2> 		
+			<p>Vous avez un projet ? Discutons-en !</p>
+			<form action="#" method="post">
+				<label for="name">Nom</label>
+				<input type="text" name="name" id="name">
+				<label for="email">Email</label>
+				<input type="email" name="email" id="email">
+				<label for="message">Message</label>
+				<textarea name="message" id="message" cols="30" rows="10"></textarea>
+				<input type="submit" value="Envoyer">
+			</form>
+		</section>
+	</main>
 
-<footer>
-	<nav>
-		<ul>
-			<li>Mentions Légales</li>
-		</ul>
-	</nav>
-</footer>
+	<footer>
+		<nav>
+			<ul>
+				<li>Mentions Légales</li>
+			</ul>
+		</nav>
+	</footer>
 <script src="./assets/js/script.js" defer></script>
 <script src="./assets/js/modal.js" defer></script>
 </body>

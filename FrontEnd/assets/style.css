@@ -95,6 +95,10 @@ a {
 	text-decoration: none;
 }
 
+p {
+	line-height: 15px;
+}
+
 nav ul {
 	display: flex;
 	align-items: center;
@@ -383,6 +387,22 @@ footer nav ul {
 	z-index: 100;
 }
 
+.modal-nav_icon {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.modal-nav_icon .icon-item {
+    list-style-type: none; /* Supprime les puces de liste */
+}
+
+.modal-nav_icon i {
+    background-color: transparent;
+    color: #000;
+    font-size: 20px;
+}
+
 .modal-form {
 	display: flex !important;
 	justify-content: center;
@@ -435,4 +455,18 @@ select {
 	padding: 10px;
 	margin: 10px 0;
   }
+
+  .preview-image {
+    width: 15%;
+}
+
+input[type="submit"]:disabled {
+    background-color: #A7A7A7;
+    cursor: not-allowed;
+}
+
+input[type="submit"]:enabled {
+    background-color: #1D6154;
+    cursor: pointer;
+}
   
